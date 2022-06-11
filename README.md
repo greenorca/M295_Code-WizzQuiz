@@ -6,8 +6,9 @@ REST-API for simple online quiz game.
 
 three tables:
 
+```
 Category -|--<- Question -|--<- Answer
-
+```
 
 
 # Lessons learned
