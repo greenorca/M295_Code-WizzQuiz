@@ -16,7 +16,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 public class Answer {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Integer idAnswer;
+	private Integer id;
 	
 	private String answerText;
 	
@@ -26,12 +26,12 @@ public class Answer {
 	@JsonBackReference
 	private Question question;
 		
-	public Integer getIdAnswer() {
-	  return idAnswer;
+	public Integer getId() {
+	  return id;
 	}
 	
-	public void setIdAnswer(Integer id) {
-	  this.idAnswer = id;
+	public void setId(Integer id) {
+	  this.id = id;
 	}
 
 	public String getAnswerText() {

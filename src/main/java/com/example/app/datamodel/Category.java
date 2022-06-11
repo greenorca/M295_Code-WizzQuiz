@@ -17,7 +17,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 public class Category {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Integer idCategory;
+	private Integer id;
 	
 	private String categoryText;
 	
@@ -27,12 +27,12 @@ public class Category {
 	private Set<Question> questions; 
 	public Set<Question> getQuestions() { return questions; }
 	*/  
-	public Integer getIdCategory() {
-	  return idCategory;
+	public Integer getId() {
+	  return id;
 	}
 	
-	public void setIdCategory(Integer id) {
-	  this.idCategory = id;
+	public void setId(Integer id) {
+	  this.id = id;
 	}
 
 	public String getCategoryText() {
