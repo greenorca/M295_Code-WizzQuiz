@@ -24,11 +24,16 @@ spring.datasource.password=ThePassword
 
 see http://localhost:8080/v3/api-docs/ 
 
-Imlementation according to https://www.baeldung.com/spring-rest-openapi-documentation (just added the springdoc-openapi-ui dependency in pom.xml) 
+Implementation according to https://www.baeldung.com/spring-rest-openapi-documentation (just added the springdoc-openapi-ui dependency in pom.xml) 
 
-## Data validiation 
+## Data validation 
 
 https://knasmueller.net/send-json-objects-via-post-to-spring-boot-controllers
+
+## Manual API Testing
+
+* using RESTED plugin for Firefox
+* using POSTMAN plugin for Chrome
 
 ## Demo Data
 

@@ -45,6 +45,10 @@ public class Question {
 	}
 
 	public Category getCategory() { return category; }
+
+	public void setCategory(Category cat) {
+		this.category = cat;
+	}
 	
 	/*@OneToMany(mappedBy = "question")
 	@JsonManagedReference

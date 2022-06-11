@@ -27,7 +27,12 @@ public class QuestionController {
   private CategoryRepository catRepo;
   
   @PostMapping(path="/add") // Map ONLY POST Requests
-  public @ResponseBody String addNewQuestion (@RequestParam Question question) {
+  public @ResponseBody String addNewQuestion (@RequestParam String questionText, 
+		  @RequestParam int idCategory) {
+	Category cat = catRepo.findById(idCategory).get();
+	Question question = new Question();
+	question.setQuestionText(questionText);
+	question.setCategory(cat);
     questionRepository.save(question);
     return "Saved";
   }
