@@ -60,6 +60,10 @@ INSERT INTO question VALUES
 (13, "Welcher Befehl dient zur Ausgabe der Zeichenkette Hello World",2);
 ```
 
+## Deploy elsewhere
+
+`mvn package` creates a neat executable JAR-file in target folder that even runs on plain standard edition Java
+
 # Lessons learned
 
 1. datamodel package must be inside app package (otherwise odd error: annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}!
