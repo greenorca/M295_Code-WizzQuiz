@@ -21,10 +21,12 @@ public class Category {
 	
 	private String categoryText;
 	
+	/*
 	@OneToMany(mappedBy="category")
 	@JsonManagedReference
 	private Set<Question> questions; 
-	
+	public Set<Question> getQuestions() { return questions; }
+	*/  
 	public Integer getIdCategory() {
 	  return idCategory;
 	}
@@ -41,6 +43,5 @@ public class Category {
 		this.categoryText = category;
 	}
 
-	public Set<Question> getQuestions() { return questions; }
-  
+	
 }

@@ -19,7 +19,8 @@ import com.example.app.datamodel.QuestionRepository;
 public class QuestionController {
   @Autowired
   private QuestionRepository questionRepository;
-  
+  @Autowired
+  private CategoryRepository catRepo;
   
   @PostMapping(path="/add") // Map ONLY POST Requests
   public @ResponseBody String addNewQuestion (@RequestParam Question question) {
@@ -28,7 +29,13 @@ public class QuestionController {
     return "Saved";
   }
   
-  
+
+  @GetMapping(path="/category/{id}")
+  public @ResponseBody Iterable<Question> getQuestionByCategory(@PathVariable("id") int id) {
+    Category cat = catRepo.findById(id).get();
+    return questionRepository.findByCategory(cat);
+  }
+
   @GetMapping(path="/question/{id}")
   public @ResponseBody Question getQuestion(@PathVariable("id") int id) {
     // This returns a JSON or XML with the questions

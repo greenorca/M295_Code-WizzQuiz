@@ -7,6 +7,6 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface AnswerRepository extends CrudRepository<Answer, Integer> {
 
-	Answer findByQuestion(Question q);
+	Iterable<Answer> findAnswersByQuestion(Question q);
 
 }	
