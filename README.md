@@ -1,3 +1,15 @@
+# Summary
+
+REST-API for simple online quiz game.
+
+## Data Model
+
+three tables:
+
+Category -|--<- Question -|--<- Answer
+
+
+
 # Lessons learned
 
 1. datamodel package must be inside app package (otherwise od error: annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}!
