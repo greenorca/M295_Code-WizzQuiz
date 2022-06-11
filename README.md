@@ -26,6 +26,10 @@ see http://localhost:8080/v3/api-docs/
 
 Imlementation according to https://www.baeldung.com/spring-rest-openapi-documentation (just added the springdoc-openapi-ui dependency in pom.xml) 
 
+## Data validiation 
+
+https://knasmueller.net/send-json-objects-via-post-to-spring-boot-controllers
+
 ## Demo Data
 
 ```sql

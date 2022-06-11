@@ -1,5 +1,9 @@
 package com.example.app.controller;
 
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,7 +28,6 @@ public class QuestionController {
   
   @PostMapping(path="/add") // Map ONLY POST Requests
   public @ResponseBody String addNewQuestion (@RequestParam Question question) {
-
     questionRepository.save(question);
     return "Saved";
   }
@@ -38,13 +41,19 @@ public class QuestionController {
 
   @GetMapping(path="/question/{id}")
   public @ResponseBody Question getQuestion(@PathVariable("id") int id) {
-    // This returns a JSON or XML with the questions
     return questionRepository.findById(id).get();
+  }
+  
+  @GetMapping(path="/game/{id}")
+  public @ResponseBody Iterable<Question> getGameQuestions(@PathVariable("id") int id) {    
+    Category cat = catRepo.findById(id).get();
+    List<Question> allQuestions = questionRepository.findByCategory(cat);
+    Collections.shuffle(allQuestions);
+    return allQuestions.subList(0, Math.min(3, allQuestions.size()));
   }
   
   @GetMapping(path="/all")
   public @ResponseBody Iterable<Question> getAllQuestiona() {
-    // This returns a JSON or XML with the questions
     return questionRepository.findAll();
   }
   

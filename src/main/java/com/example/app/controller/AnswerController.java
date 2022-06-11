@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -24,8 +25,20 @@ public class AnswerController {
   @Autowired
   private QuestionRepository questionRepo;
   
-  @PostMapping(path="/add") // Map ONLY POST Requests
-  public @ResponseBody String addNewQuestion (@RequestParam Answer answer) {
+  @PostMapping(path="/add") // Map ONLY POST Requests	
+  public @ResponseBody String addNewAnswer (
+		  @RequestParam String answerText, 
+		  @RequestParam Boolean correct, 
+		  @RequestParam Integer idQuestion) {
+	
+	Question q = questionRepo.findById(idQuestion).get();
+	if (q == null) {
+		return "invalid question_id";
+	}
+	Answer answer = new Answer();
+	answer.setAnswerText(answerText);
+	answer.setCorrect(correct);
+	answer.setQuestion(q);
     answerRepository.save(answer);
     return "Saved";
   }

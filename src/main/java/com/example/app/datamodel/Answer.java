@@ -51,6 +51,10 @@ public class Answer {
 	public void setCorrect(Boolean correct) {
 		this.correct = correct;
 	}
+
+	public void setQuestion(Question q) {
+		this.question = q;
+	}
   
     
 }

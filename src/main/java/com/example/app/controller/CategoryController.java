@@ -31,13 +31,13 @@ public class CategoryController {
   
   @GetMapping(path="/all")
   public @ResponseBody Iterable<Category> getAllCategories() {
-    // This returns a JSON or XML with the questions
+    
     return categoryRepository.findAll();
   }
   
   @GetMapping(path="/category/{cat_id}")
   public @ResponseBody Category getCategory(@PathVariable("cat_id") int catId) {
-    // This returns a JSON or XML with the questions
+    
     return categoryRepository.findById(catId).get();
   }
   
