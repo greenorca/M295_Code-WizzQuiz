@@ -20,6 +20,12 @@ spring.datasource.username=springuser
 spring.datasource.password=ThePassword
 ```
 
+## REST-API documentation
+
+see http://localhost:8080/v3/api-docs/ 
+
+Imlementation according to https://www.baeldung.com/spring-rest-openapi-documentation (just added the springdoc-openapi-ui dependency in pom.xml) 
+
 ## Demo Data
 
 ```sql
@@ -60,9 +66,7 @@ INSERT INTO question VALUES
 
 2. xRepository functions are auto generated (just create the base as seen in UserRepository, and adapt the return type )
 
-3. avoid simple id-attributes, name them like  the table, e.g. idQuestion, idCategory etc. (otherwise we get stupid recursions) ???
-
-4. prevent recursive reads between one2many and many2one - references als follows:
+4. prevent recursive reads between one2many and many2one - references:
 
 	- in the N-part:
 	```
@@ -78,7 +82,7 @@ INSERT INTO question VALUES
 	private Set<Question> questions; 
 	```
 
-5. or prevent recursive reads by disabling the back reference completely:
+5. or **prevent recursive reads by disabling the back reference completely**:
 
 	```
 	/*@OneToMany(mappedBy = "question")
