@@ -35,10 +35,10 @@ public class CategoryController {
     return categoryRepository.findAll();
   }
   
-  @GetMapping(path="/category/{id}")
-  public @ResponseBody Category getCategory(@PathVariable("id") int id) {
+  @GetMapping(path="/category/{cat_id}")
+  public @ResponseBody Category getCategory(@PathVariable("cat_id") int catId) {
     // This returns a JSON or XML with the questions
-    return categoryRepository.findById(id).get();
+    return categoryRepository.findById(catId).get();
   }
   
   

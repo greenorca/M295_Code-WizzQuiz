@@ -22,19 +22,12 @@ public class QuestionController {
   
   
   @PostMapping(path="/add") // Map ONLY POST Requests
-  public @ResponseBody String addNewCategory (@RequestParam Question question) {
+  public @ResponseBody String addNewQuestion (@RequestParam Question question) {
 
     questionRepository.save(question);
     return "Saved";
   }
   
-  /*@GetMapping(path="/for-category/{id}")
-  public @ResponseBody Iterable<Question> getQuestionForCategory(@PathVariable("id") int id) {
-    // This returns a JSON or XML with the questions
-	Category cat = catRepo.findById(id).get();
-	System.out.println("Cat found: "+id+": "+cat.getCategoryText());
-    return questionRepository.findByCategory(cat);
-  }*/
   
   @GetMapping(path="/question/{id}")
   public @ResponseBody Question getQuestion(@PathVariable("id") int id) {

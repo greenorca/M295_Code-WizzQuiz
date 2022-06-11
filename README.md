@@ -51,14 +51,41 @@ INSERT INTO answer (answer_text, correct, question_id_question) VALUES
 INSERT INTO question VALUES
 (11, "Welcher Datentyp taugt für physikalische Messwerte",2),
 (12, "Welcher Datentyp kann genau ein Zeichen speichern",2),
-(13, "Welcher Befehlt dient zur Ausgabe der Zeichenkette Hello World",2);
+(13, "Welcher Befehl dient zur Ausgabe der Zeichenkette Hello World",2);
 ```
 
 # Lessons learned
 
-1. datamodel package must be inside app package (otherwise od error: annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}!
+1. datamodel package must be inside app package (otherwise odd error: annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}!
 
 2. xRepository functions are auto generated (just create the base as seen in UserRepository, and adapt the return type )
 
-3. avoid simple id-attributes, name them like  the table, e.g. idQuestion, idCategory etc. (otherwise we get stupid recursions)
+3. avoid simple id-attributes, name them like  the table, e.g. idQuestion, idCategory etc. (otherwise we get stupid recursions) ???
 
+4. prevent recursive reads between one2many and many2one - references als follows:
+
+	- in the N-part:
+	```
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JsonBackReference
+	private Category category;
+	```
+	
+	- in the 1-part:
+	```
+	@OneToMany(mappedBy="category")
+	@JsonManagedReference
+	private Set<Question> questions; 
+	```
+
+5. or prevent recursive reads by disabling the back reference completely:
+
+	```
+	/*@OneToMany(mappedBy = "question")
+	@JsonManagedReference
+	private Set<Answer> answers;
+	
+	public Set<Answer> getAnswers() {
+		return answers;
+	}*/
+	```

@@ -8,6 +8,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 //@JsonIgnoreProperties({"hibernateLazyInitializer"})
 @Entity
 @Table(name="answer")
@@ -21,6 +23,7 @@ public class Answer {
 	private Boolean correct;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
+	@JsonBackReference
 	private Question question;
 		
 	public Integer getIdAnswer() {

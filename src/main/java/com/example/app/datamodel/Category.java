@@ -9,6 +9,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 
 @Entity
 @Table(name="category")
@@ -20,6 +22,7 @@ public class Category {
 	private String categoryText;
 	
 	@OneToMany(mappedBy="category")
+	@JsonManagedReference
 	private Set<Question> questions; 
 	
 	public Integer getIdCategory() {

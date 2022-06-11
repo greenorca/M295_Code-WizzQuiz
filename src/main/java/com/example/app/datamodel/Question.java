@@ -1,9 +1,7 @@
 package com.example.app.datamodel;
 
-import java.util.List;
 import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -13,9 +11,10 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
-//@JsonIgnoreProperties({"hibernateLazyInitializer"})
+
 @Entity
 @Table(name="question")
 public class Question {
@@ -26,6 +25,7 @@ public class Question {
 	private String questionText;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
+	@JsonBackReference
 	private Category category;
 		
 	public Integer getIdQuestion() {
@@ -46,12 +46,13 @@ public class Question {
 
 	public Category getCategory() { return category; }
 	
-	@OneToMany(mappedBy = "question")
+	/*@OneToMany(mappedBy = "question")
+	@JsonManagedReference
 	private Set<Answer> answers;
 	
 	public Set<Answer> getAnswers() {
 		return answers;
-	}
+	}*/
 	
 	
   
