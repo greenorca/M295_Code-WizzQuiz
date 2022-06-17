@@ -22,7 +22,7 @@ spring.datasource.password=ThePassword
 
 ## REST-API documentation
 
-see http://localhost:8080/v3/api-docs/ 
+see [http://localhost:8080/v3/api-docs/](http://localhost:8080/v3/api-docs/)
 
 Implementation according to https://www.baeldung.com/spring-rest-openapi-documentation (just added the springdoc-openapi-ui dependency in pom.xml) 
 
@@ -78,6 +78,20 @@ INSERT INTO question VALUES
 1. datamodel package must be inside app package (otherwise odd error: annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}!
 
 2. xRepository functions are auto generated (just create the base as seen in UserRepository, and adapt the return type )
+
+3. enable global CORS support (as seen on https://www.baeldung.com/spring-cors): 
+
+	```java
+	@Configuration
+	@EnableWebMvc
+	public class WebConfig implements WebMvcConfigurer {
+	
+	    @Override
+	    public void addCorsMappings(CorsRegistry registry) {
+	        registry.addMapping("/**");
+	    }
+	}	
+	``
 
 4. prevent recursive reads between one2many and many2one - references:
 
